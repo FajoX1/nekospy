@@ -27,7 +27,7 @@ pip install -r requirements.txt</code></pre>
 - Add your bot to log chat with admin rigts (including **change topics**)
 - Turn on ***Business mode*** for bot in [@BotFather](https://t.me/BotFather)
 - Add your bot to your account (**Open Settings** → **Telegram Business** → **ChatBots**) (require ***Telegram premium***)
-- Install **[Redis db](https://redis.io/docs/latest/operate/oss_and_stack/install/archive/install-redis/)** and get it's `REDIS_HOST`, `REDIS_PORT`, `REDIS_PASSWORD`
+- Install **[Redis DB](https://redis.io/docs/latest/operate/oss_and_stack/install/archive/install-redis/)** and get it's `REDIS_HOST`, `REDIS_PORT`, `REDIS_PASSWORD`
 
 <pre><code>BOT_TOKEN = 
 ADMIN_ID = 
