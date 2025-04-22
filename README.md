@@ -10,7 +10,7 @@
 
 ## ⬇️ Install
 
-### 🐍 Install Python 3.12 and PIP
+### 🐍 Install Python 3.12 and pip
 
 ### ⌨️  Clone repository and install libraries
 
