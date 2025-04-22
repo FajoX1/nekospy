@@ -3,6 +3,7 @@ from aiogram import Router
 
 from nekospy import dp, bot, redis, config, db, utils
 from nekospy.keyboards.main import edited_message_kb
+from nekospy.utils import send_media
 
 import asyncio
 
@@ -10,6 +11,29 @@ router = Router()
 
 @dp.business_message()
 async def message(message: types.Message):
+    if message.reply_to_message and message.from_user.id == config.ADMIN_ID:
+        model_dump = await redis.get(f"{message.chat.id}:{message.reply_to_message.message_id}")
+
+        if model_dump:
+            return
+
+        user = await db.user.get(message.reply_to_message.from_user.id)
+
+        await bot.send_message(
+            chat_id=config.LOG_CHAT_ID,
+            text="<b>🔥 Self destructed message:</b>",
+            message_thread_id=user.topic_id,
+        )
+
+        if message.reply_to_message.photo:
+            await send_media(bot, config.LOG_CHAT_ID, user, 'jpg', message.reply_to_message.photo[-1].file_id, user.topic_id)
+        elif message.reply_to_message.video:
+            await send_media(bot, config.LOG_CHAT_ID, user, 'mp4', message.reply_to_message.video.file_id, user.topic_id)
+        elif message.reply_to_message.voice:
+            await send_media(bot, config.LOG_CHAT_ID, user, 'ogg', message.reply_to_message.voice.file_id, user.topic_id)
+        elif message.reply_to_message.video_note:
+            await send_media(bot, config.LOG_CHAT_ID, user, 'mp4', message.reply_to_message.video_note.file_id, user.topic_id)
+
     await utils.set_message(message)
 
 @dp.edited_business_message()
@@ -29,7 +53,7 @@ async def edited_message(message: types.Message):
     await bot.send_message(
         chat_id=config.LOG_CHAT_ID,
         message_thread_id=user.topic_id,
-        text=f"<b>✏️ Edit message, old message:</b>",
+        text="<b>✏️ Edit message, old message:</b>",
     )
     await original_message.send_copy(
         chat_id=config.LOG_CHAT_ID,
@@ -60,7 +84,7 @@ async def deleted_message(business_messages: types.BusinessMessagesDeleted):
         await bot.send_message(
             chat_id=config.LOG_CHAT_ID,
             message_thread_id=user.topic_id,
-            text=f"<b>🗑 Deleted message:</b>",
+            text="<b>🗑 Deleted message:</b>",
         )
         await original_message.send_copy(
             chat_id=config.LOG_CHAT_ID,

@@ -2,7 +2,9 @@
 <img src="https://i.gifer.com/3uvT.gif">
 <h1>💫 NekoSpy 2.0</h1>
 
-***Sends you deleted and edited messages from users***
+***Sends you deleted, edited, and self-destructing messages from users organized by personal chat topics***
+
+*To save self-destructing messages, you must reply to them with a message* 
 
 <img src="assets/preview.png">
 
@@ -27,7 +29,7 @@ pip install -r requirements.txt</code></pre>
 - Add your bot to log chat with admin rigts (including **change topics**)
 - Turn on ***Business mode*** for bot in [@BotFather](https://t.me/BotFather)
 - Add your bot to your account (**Open Settings** → **Telegram Business** → **ChatBots**) (require ***Telegram premium***)
-- Install **[Redis DB](https://redis.io/docs/latest/operate/oss_and_stack/install/archive/install-redis/)** and get it's `REDIS_HOST`, `REDIS_PORT`, `REDIS_PASSWORD`
+- Install **[Redis DB](https://redis.io/docs/latest/operate/oss_and_stack/install/archive/install-redis/)** or run in docker (`docker run -p 6379:6379 -d redis`) and get it's `REDIS_HOST`, `REDIS_PORT`, `REDIS_PASSWORD`
 
 <pre><code>BOT_TOKEN = 
 ADMIN_ID = 
