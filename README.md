@@ -44,5 +44,5 @@ REDIS_PASSWORD =</code></pre>
 
 Type `python3 -m nekospy`
 
-<i>Lisenced under GNU 3.0<br>
+<i>Lisenced under GPL GNU 3.0<br>
 Developer: <a href="https://t.me/fajox">@fajox</a></i>
