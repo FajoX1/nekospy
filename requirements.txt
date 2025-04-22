@@ -1,0 +1,7 @@
+aiogram
+sqlalchemy
+redis
+python-dotenv
+rich
+GitPython
+aiosqlite
