@@ -38,7 +38,8 @@ LOG_CHAT_ID =
 
 REDIS_HOST =
 REDIS_PORT =
-REDIS_PASSWORD =</code></pre>
+REDIS_PASSWORD =
+REDIS_EXPIRE_DAYS = 21</code></pre>
 
 *Put your changes into `.env` file*
 
